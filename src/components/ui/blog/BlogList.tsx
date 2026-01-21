@@ -22,13 +22,13 @@ function BlogList({ onSelectBlog, onCreateNew }: BlogListProps) {
     return (
       <div className="space-y-4">
         {[1, 2, 3].map((i) => (
-          <Card key={i} className="bg-gray-900 border-blue-500/30">
+          <Card key={i} className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700">
             <CardHeader>
-              <Skeleton className="h-4 w-32 bg-gray-700" />
-              <Skeleton className="h-6 w-48 bg-gray-700" />
+              <Skeleton className="h-4 w-32 bg-slate-200 dark:bg-slate-700" />
+              <Skeleton className="h-6 w-48 bg-slate-200 dark:bg-slate-700" />
             </CardHeader>
             <CardContent>
-              <Skeleton className="h-16 w-full bg-gray-700" />
+              <Skeleton className="h-16 w-full bg-slate-200 dark:bg-slate-700" />
             </CardContent>
           </Card>
         ))}
@@ -38,8 +38,8 @@ function BlogList({ onSelectBlog, onCreateNew }: BlogListProps) {
 
   if (isError) {
     return (
-      <Alert className="bg-red-900/20 border-red-500">
-        <AlertDescription className="text-red-400">
+      <Alert className="bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800">
+        <AlertDescription className="text-red-800 dark:text-red-300">
           Error loading blogs: {error.message}
         </AlertDescription>
       </Alert>
@@ -48,17 +48,17 @@ function BlogList({ onSelectBlog, onCreateNew }: BlogListProps) {
 
   return (
     <div className="space-y-4">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-white">All Blogs</h2>
-        <Button onClick={onCreateNew} className="bg-blue-600 hover:bg-blue-700">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">All Blogs</h2>
+        <Button onClick={onCreateNew} className="bg-indigo-600 hover:bg-indigo-700 text-white w-full sm:w-auto">
           <Plus className="w-4 h-4 mr-2" />
           New Blog
         </Button>
       </div>
       
       {blogs?.length === 0 ? (
-        <Card className="bg-gray-900 border-blue-500/30">
-          <CardContent className="pt-6 text-center text-gray-400">
+        <Card className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700">
+          <CardContent className="pt-6 text-center text-slate-500 dark:text-slate-400">
             No blogs yet. Create your first blog!
           </CardContent>
         </Card>
@@ -66,21 +66,25 @@ function BlogList({ onSelectBlog, onCreateNew }: BlogListProps) {
         blogs?.map((blog) => (
           <Card 
             key={blog.id} 
-            className="bg-gray-900 border-blue-500/30 hover:border-blue-500 cursor-pointer transition-all"
+            className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-indigo-300 dark:hover:border-indigo-600 cursor-pointer transition-all hover:shadow-md"
             onClick={() => onSelectBlog(blog.id)}
           >
             <CardHeader>
-              <div className="flex justify-between items-start mb-2">
-                <span className="text-orange-400 text-sm font-medium">{blog.category}</span>
-                <span className="text-gray-500 text-sm flex items-center gap-1">
+              <div className="flex flex-col sm:flex-row justify-between items-start gap-2 mb-2">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-300">
+                  {blog.category}
+                </span>
+                <span className="text-slate-500 dark:text-slate-400 text-sm flex items-center gap-1">
                   <Calendar className="w-3 h-3" />
                   {blog.date}
                 </span>
               </div>
-              <CardTitle className="text-blue-400 text-xl">{blog.title}</CardTitle>
+              <CardTitle className="text-slate-900 dark:text-slate-100 text-lg sm:text-xl">
+                {blog.title}
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              <CardDescription className="text-orange-300 line-clamp-3">
+              <CardDescription className="text-slate-600 dark:text-slate-300 line-clamp-3">
                 {blog.description}
               </CardDescription>
             </CardContent>
