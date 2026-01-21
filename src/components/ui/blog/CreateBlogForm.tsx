@@ -178,3 +178,5 @@ function CreateBlogForm({ onBack }: CreateBlogFormProps) {
     </div>
   );
 }
+
+export default CreateBlogForm;

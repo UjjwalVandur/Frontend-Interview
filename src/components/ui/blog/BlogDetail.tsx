@@ -59,7 +59,7 @@ function BlogDetail({ blogId, onBack }: BlogDetailProps) {
       </Button>
 
       <div className="bg-gray-900 border-2 border-green-500 rounded-lg overflow-hidden">
-        <div className="h-64 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+        <div className="h-64 bg-linear-to-br from-gray-800 to-gray-900 flex items-center justify-center">
           <span className="text-orange-400 text-2xl font-bold">Blog Cover Image</span>
         </div>
 
@@ -105,3 +105,4 @@ function BlogDetail({ blogId, onBack }: BlogDetailProps) {
     </div>
   );
 }
+export default BlogDetail;

@@ -90,3 +90,5 @@ function BlogList({ onSelectBlog, onCreateNew }: BlogListProps) {
     </div>
   );
 }
+
+export default BlogList;
