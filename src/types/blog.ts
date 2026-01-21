@@ -1,6 +1,6 @@
 import { QueryClient } from '@tanstack/react-query';
 
-interface Blog {
+export interface Blog {
   id: number;
   category: string;
   title: string;
@@ -10,7 +10,7 @@ interface Blog {
   tags: string[];
 }
 
-interface BlogFormData {
+export interface BlogFormData {
   category: string;
   title: string;
   description: string;
@@ -19,7 +19,7 @@ interface BlogFormData {
   tags: string;
 }
 
-interface CreateBlogData {
+export interface CreateBlogData {
   category: string;
   title: string;
   description: string;
@@ -28,9 +28,9 @@ interface CreateBlogData {
   tags: string[];
 }
 
-type ViewType = 'list' | 'detail' | 'create';
+export type ViewType = 'list' | 'detail' | 'create';
 
-const queryClient = new QueryClient({
+export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 1000 * 60 * 5,
